@@ -97,4 +97,22 @@ let formData = [
 
 // -------- Your Code Goes Below this Line --------
 
+// Parent for all our children...
+const fields = document.querySelector("#fields")
 
+for (var i = 0; i < formData.length; i++) {
+  if (formData[i].type === "text") {
+    let input = document.createElement("input")
+    input.type = formData[i].type
+    input.placeholder = formData[i].label
+    input.id = formData[i].id
+    fields.appendChild(input)
+  } else {
+      let select = document.createElement("select")
+      let option = document.createElement("option")
+      select.type = formData[i].type
+      select.placeholder = formData[i].label
+      option.options = formData[i].options[i, i]
+      fields.appendChild(select)
+    }
+  }
