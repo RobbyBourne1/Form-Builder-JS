@@ -104,13 +104,15 @@ for (let i = 0; i < formData.length; i++) {
   if (formData[i].type === "select") {
     let select = document.createElement("select")
     select.type = formData[i].type
-    select.value = formData[i].label
-    fields.appendChild(select)
-    for (let j = 0; j < formData[i].options[j].length; j++) {
-      let opt = document.createElement("opt")
-      opt.options = options[j].label
-      fields.appendChild(opt)
+    let opt = document.createElement("option")
+    opt.innerHTML = formData[i].label
+    select.appendChild(opt)
+    for (let j = 0; j < formData[i].options.length; j++) {
+      let opt = document.createElement("option")
+      opt.innerHTML = formData[i].options[j].label
+      select.appendChild(opt)
     }
+    fields.appendChild(select)
   } else if (formData[i].type === "textarea") {
     let textarea = document.createElement("textarea")
     textarea.type = formData[i].type
