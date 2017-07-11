@@ -100,19 +100,28 @@ let formData = [
 // Parent for all our children...
 const fields = document.querySelector("#fields")
 
-for (var i = 0; i < formData.length; i++) {
-  if (formData[i].type === "text") {
-    let input = document.createElement("input")
-    input.type = formData[i].type
-    input.placeholder = formData[i].label
-    input.id = formData[i].id
-    fields.appendChild(input)
-  } else {
-      let select = document.createElement("select")
-      let option = document.createElement("option")
-      select.type = formData[i].type
-      select.placeholder = formData[i].label
-      option.options = formData[i].options[i, i]
-      fields.appendChild(select)
+for (let i = 0; i < formData.length; i++) {
+  if (formData[i].type === "select") {
+    let select = document.createElement("select")
+    select.type = formData[i].type
+    select.value = formData[i].label
+    fields.appendChild(select)
+    for (let j = 0; j < formData[i].options[j].length; j++) {
+      let opt = document.createElement("opt")
+      opt.options = options[j].label
+      fields.appendChild(opt)
+    }
+  } else if (formData[i].type === "textarea") {
+    let textarea = document.createElement("textarea")
+    textarea.type = formData[i].type
+    textarea.placeholder = formData[i].label
+    fields.appendChild(textarea)
+  }  else {
+      let input = document.createElement("input")
+      input.type = formData[i].type
+      input.placeholder = formData[i].label
+      input.id = formData[i].id
+      fields.appendChild(input)
+
     }
   }
